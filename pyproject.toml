@@ -4,6 +4,9 @@ version = "0.1.0"
 description = "Client for Commit Explorer"
 authors = ["hlib <hlibbabii@gmail.com>"]
 license = "Apache 2.0"
+packages = [
+    { include = "commitexplorer" },
+]
 
 [tool.poetry.dependencies]
 python = "^3.8"
