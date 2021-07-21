@@ -23,8 +23,8 @@ class CommitNotFoundException(Exception):
 
 
 def _query_commit_explorer_ironspeed(sha: str) -> Response:
-    IRONSPEED_URL = "http://10.10.20.160"
-    return http_session.get(f"{IRONSPEED_URL}/{sha[:2]}/{sha[2:4]}/{sha[4:]}")
+    IRONSPEED_URL = "http://squirrel.inf.unibz.it:8180/ce"
+    return http_session.get(f"{IRONSPEED_URL}/{sha}")
 
 
 def query_commit_explorer(sha: str) -> Response:
