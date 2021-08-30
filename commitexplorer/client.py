@@ -6,11 +6,16 @@ from requests import Response
 from requests.adapters import HTTPAdapter
 from requests_cache import CachedSession
 from urllib3 import Retry
+from typing import Optional
 
 
 retry_strategy = Retry(total=10, backoff_factor=10)
 http_adapter = HTTPAdapter(max_retries=retry_strategy)
-http_session = CachedSession(allowable_codes=(200, 404), cache_name=os.path.join(user_cache_dir('commit-explorer-client'), 'http_cache'))
+if 'CACHE_DIR' in os.environ:
+    cache_dir = os.environ['CACHE_DIR']
+else:
+    cache_dir = os.path.join(user_cache_dir('commit-explorer-client'), 'http_cache')
+http_session = CachedSession(allowable_codes=(200, 404), cache_name=cache_dir)
 http_session.mount("http://", http_adapter)
 
 
