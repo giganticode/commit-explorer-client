@@ -6,8 +6,7 @@ from requests import Response
 from requests.adapters import HTTPAdapter
 from requests_cache import CachedSession
 from urllib3 import Retry
-from typing import Optional
-
+from typing import Optional, Dict
 
 retry_strategy = Retry(total=10, backoff_factor=10)
 http_adapter = HTTPAdapter(max_retries=retry_strategy)
@@ -27,7 +26,7 @@ class CommitNotFoundException(Exception):
     pass
 
 
-def _query_commit_explorer_ironspeed(sha: str) -> Optional[Dict]:
+def _query_commit_explorer_ironspeed(sha: str) -> Response:
     IRONSPEED_URL = "http://squirrel.inf.unibz.it:8180/ce"
     return http_session.get(f"{IRONSPEED_URL}/{sha}")
 
