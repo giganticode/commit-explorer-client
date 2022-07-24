@@ -12,6 +12,8 @@ packages = [
 python = "^3.8"
 requests-cache = "^0.7.1"
 appdirs = "^1.4.4"
+pymongo = "^3.12.2"
+jsonlines = "^3.0.0"
 
 [tool.poetry.dev-dependencies]
 pytest = "^6.2.4"
